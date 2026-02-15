@@ -77,7 +77,7 @@ To ensure hashes match **Shodan's** database, this tool follows the specific Pyt
 
 ## 👤 Author
 
-Developed by **Lucía (G3kSec)**.
+Developed by **Luciano Griffa (Aka. G3kSec)**.
 * Security Researcher / Bug Bounty Hunter.
 
 ---
