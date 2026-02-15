@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 0xHashFavicon
+> **Advanced Favicon Fingerprinting for Infrastructure Mapping & Asset Discovery.**
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-000-white?style=flat-square&logo=next.js)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000?style=flat-square&logo=shadcnui)
+![License](https://img.shields.io/badge/License-MIT-emerald?style=flat-square)
 
-First, run the development server:
+**0xHashFavicon** is a minimalist OSINT tool designed to convert website favicons into Shodan/Fofa compatible MurmurHash3 signatures. In the world of Bug Bounty, this allows you to pivot from a single visual identity to a full list of an organization's exposed infrastructure.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **URL-to-Hash:** Extract and hash favicons directly from a target domain.
+* **File Upload:** Upload local `.ico` or image files to generate signatures.
+* **Shodan & Fofa Integration:** One-click pivots to search the generated hash across global infrastructure.
+* **Local History:** Keep track of your last 10 scans (saved in `localStorage`).
+* **Precise Hashing:** Implements Shodan's specific logic (Base64 encoding with 76-character line breaks).
+* **Minimalist UI:** Built with Poppins font and a dark "hacker-centric" aesthetic.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Tool | Purpose |
+| :--- | :--- |
+| **Next.js 15** | React Framework (App Router) |
+| **Tailwind CSS v4** | Styling & Theme Engine |
+| **shadcn/ui** | Accessible UI Components |
+| **MurmurHash3.js** | Non-cryptographic hashing algorithm |
+| **Axios/Cheerio** | Favicon scraping & metadata extraction |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📖 Methodology
 
-## Deploy on Vercel
+To ensure hashes match **Shodan's** database, this tool follows the specific Python `base64.encodebytes()` logic:
+1. Fetch/Load the favicon image.
+2. Encode binary data to **Base64**.
+3. Insert a **newline (\n) every 76 characters** (MIME standard).
+4. Apply **MurmurHash3 (x86 32-bit)** to the resulting string.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚙️ Installation
+
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/lucia/0xhashfavicon.git
+   cd 0xhashfavicon
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install murmurhash3js cheerio axios
+   ```
+
+3. **Run in development mode:**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🛡️ Usage for Bug Bounty
+
+1. Find a target's favicon (e.g., `https://target.com/favicon.ico`).
+2. Paste the URL or upload the file to **0xHashFavicon**.
+3. Click the **Shodan** button to find:
+   * Dev/Staging servers.
+   * Hidden admin panels.
+   * Forgotten cloud buckets.
+   * Phishing sites impersonating the target.
+
+---
+
+## 👤 Author
+
+Developed by **Lucía (G3kSec)**.
+* Security Researcher / Bug Bounty Hunter.
+
+---
+
+## ⚖️ License
+
+This project is licensed under the MIT License.
