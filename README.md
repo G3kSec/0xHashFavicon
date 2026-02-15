@@ -47,7 +47,7 @@ To ensure hashes match **Shodan's** database, this tool follows the specific Pyt
 
 1. **Clone the repo:**
    ```bash
-   git clone https://github.com/lucia/0xhashfavicon.git
+   git clone https://github.com/g3ksec/0xhashfavicon.git
    cd 0xhashfavicon
    ```
 
@@ -77,7 +77,7 @@ To ensure hashes match **Shodan's** database, this tool follows the specific Pyt
 
 ## 👤 Author
 
-Developed by **Lucía (G3kSec)**.
+Developed by **Luciano Griffa (Aka. G3kSec)**.
 * Security Researcher / Bug Bounty Hunter.
 
 ---
