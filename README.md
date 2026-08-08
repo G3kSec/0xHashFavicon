@@ -3,7 +3,6 @@
 ![Next.js](https://img.shields.io/badge/Next.js-000-white?style=flat-square&logo=next.js)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
 ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000?style=flat-square&logo=shadcnui)
-![License](https://img.shields.io/badge/License-MIT-emerald?style=flat-square)
 
 Minimalist OSINT tool that converts website favicons into Shodan/Fofa compatible MurmurHash3 signatures, letting you pivot from a visual identity to an organization's exposed infrastructure.
 
@@ -30,7 +29,3 @@ npm run dev
 
 1. Enter a target domain (or paste a direct favicon URL) or upload an icon file.
 2. Copy the generated hash, or jump straight to Shodan/Fofa to find matching infrastructure (dev/staging servers, admin panels, forgotten buckets, phishing clones).
-
-## License
-
-MIT
