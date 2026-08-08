@@ -125,7 +125,7 @@ export default function FaviconHasher() {
           </div>
 
           <div className="flex items-center gap-3">
-            <a href="https://github.com/G3kSec" target="_blank" rel="noreferrer">
+            <a href="https://github.com/G3kSec/0xHashFavicon" target="_blank" rel="noreferrer">
               <Button variant="outline" size="icon" className="cursor-pointer border-border text-muted-foreground hover:text-primary hover:border-primary/40">
                 <Github className="size-4" />
               </Button>
