@@ -125,13 +125,6 @@ export default function FaviconHasher() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono text-muted-foreground uppercase tracking-widest">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-              </span>
-              system online
-            </div>
             <a href="https://github.com/G3kSec" target="_blank" rel="noreferrer">
               <Button variant="outline" size="icon" className="cursor-pointer border-border text-muted-foreground hover:text-primary hover:border-primary/40">
                 <Github className="size-4" />
