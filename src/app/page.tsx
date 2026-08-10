@@ -365,7 +365,7 @@ export default function FaviconHasher() {
             <p className="text-xs font-mono tracking-tight">
               <span className="font-bold text-foreground">0xHashFavicon</span>
               <span className="mx-2 text-border">|</span>
-              developed by{" "}
+              by{" "}
               <span className="hover:text-primary transition-colors">G3kSec</span>
             </p>
           </div>
