@@ -4,6 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ═══════════════════════════════════════════════════════════════════════
+   0xHashFavicon — Design tokens
+
+   Same green accent and neutral bias as the rest of the 0x family
+   (0xBugLetter, 0xBugLabs) — shadcn's own variable names are kept as-is
+   (Button/Card/Input/Tabs are wired to them), only the values change.
+   ═══════════════════════════════════════════════════════════════════════ */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -45,75 +53,106 @@
   --radius-4xl: calc(var(--radius) + 16px);
   --font-sans: var(--font-poppins);
   --font-mono: var(--font-geist-mono);
+
+  /* Dense type scale, shared with 0xBugLetter and 0xBugLabs so the family
+     reads at the same rhythm even though this app renders through
+     shadcn's own component classes instead of hand-authored ones. */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1.4;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.55;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.65;
+  --text-lg: 1.0625rem;
+  --text-lg--line-height: 1.55;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.4;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.3;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 1.2;
+  --text-4xl: 2.75rem;
+  --text-4xl--line-height: 1.08;
+  --text-5xl: 3.5rem;
+  --text-5xl--line-height: 1.04;
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.985 0.003 145);
-  --foreground: oklch(0.16 0.01 145);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.01 145);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.01 145);
-  --primary: oklch(0.47 0.135 152);
-  --primary-foreground: oklch(0.99 0.01 145);
-  --secondary: oklch(0.95 0.005 145);
-  --secondary-foreground: oklch(0.16 0.01 145);
-  --muted: oklch(0.95 0.005 145);
-  --muted-foreground: oklch(0.47 0.01 145);
-  --accent: oklch(0.93 0.035 152);
-  --accent-foreground: oklch(0.32 0.09 152);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.89 0.006 145);
-  --input: oklch(0.89 0.006 145);
-  --ring: oklch(0.47 0.135 152 / 50%);
+  /* Tighter than shadcn's 0.5rem default — the family favors a crisp,
+     hairline-bordered look over softly rounded cards. */
+  --radius: 0.375rem;
+
+  --background: #f7faf8;
+  --foreground: #0b0e0b;
+  --card: #ffffff;
+  --card-foreground: #0b0e0b;
+  --popover: #ffffff;
+  --popover-foreground: #0b0e0b;
+  --primary: #006e34;
+  --primary-foreground: #f8fef8;
+  --secondary: #eaf1ec;
+  --secondary-foreground: #0b0e0b;
+  --muted: #eaf1ec;
+  --muted-foreground: #4f5a52;
+  /* shadcn's "accent" is a neutral hover highlight, not the brand color —
+     kept as a soft green tint (same pairing as an accent-toned Chip in
+     0xBugLetter/0xBugLabs) so ghost/outline hovers read as "highlighted",
+     not as a second, competing brand color. */
+  --accent: #006e3414;
+  --accent-foreground: #006e34;
+  --destructive: #b4162c;
+  --border: #d2e0d6;
+  --input: #d2e0d6;
+  --ring: #006e34;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0.003 145);
-  --sidebar-foreground: oklch(0.16 0.01 145);
-  --sidebar-primary: oklch(0.47 0.135 152);
-  --sidebar-primary-foreground: oklch(0.99 0.01 145);
-  --sidebar-accent: oklch(0.93 0.035 152);
-  --sidebar-accent-foreground: oklch(0.32 0.09 152);
-  --sidebar-border: oklch(0.89 0.006 145);
-  --sidebar-ring: oklch(0.47 0.135 152 / 50%);
+  --sidebar: #f7faf8;
+  --sidebar-foreground: #0b0e0b;
+  --sidebar-primary: #006e34;
+  --sidebar-primary-foreground: #f8fef8;
+  --sidebar-accent: #006e3414;
+  --sidebar-accent-foreground: #006e34;
+  --sidebar-border: #d2e0d6;
+  --sidebar-ring: #006e34;
 }
 
 .dark {
-  --background: oklch(0.135 0.004 145);
-  --foreground: oklch(0.93 0.006 145);
-  --card: oklch(0.17 0.005 145);
-  --card-foreground: oklch(0.93 0.006 145);
-  --popover: oklch(0.15 0.005 145);
-  --popover-foreground: oklch(0.93 0.006 145);
-  --primary: oklch(0.78 0.19 149);
-  --primary-foreground: oklch(0.135 0.004 145);
-  --secondary: oklch(0.22 0.006 145);
-  --secondary-foreground: oklch(0.93 0.006 145);
-  --muted: oklch(0.21 0.006 145);
-  --muted-foreground: oklch(0.63 0.014 145);
-  --accent: oklch(0.24 0.03 149);
-  --accent-foreground: oklch(0.82 0.15 149);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 8%);
-  --ring: oklch(0.78 0.19 149 / 50%);
+  --background: #070907;
+  --foreground: #e5e9e5;
+  --card: #0d110e;
+  --card-foreground: #e5e9e5;
+  --popover: #0d110e;
+  --popover-foreground: #e5e9e5;
+  --primary: #46d76f;
+  --primary-foreground: #070907;
+  --secondary: #131a15;
+  --secondary-foreground: #e5e9e5;
+  --muted: #131a15;
+  --muted-foreground: #939e95;
+  --accent: #46d76f1a;
+  --accent-foreground: #46d76f;
+  --destructive: #ff6d80;
+  --border: #1f2a21;
+  --input: #1f2a21;
+  --ring: #46d76f;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.15 0.005 145);
-  --sidebar-foreground: oklch(0.93 0.006 145);
-  --sidebar-primary: oklch(0.78 0.19 149);
-  --sidebar-primary-foreground: oklch(0.135 0.004 145);
-  --sidebar-accent: oklch(0.24 0.03 149);
-  --sidebar-accent-foreground: oklch(0.82 0.15 149);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.78 0.19 149 / 50%);
+  --sidebar: #0d110e;
+  --sidebar-foreground: #e5e9e5;
+  --sidebar-primary: #46d76f;
+  --sidebar-primary-foreground: #070907;
+  --sidebar-accent: #46d76f1a;
+  --sidebar-accent-foreground: #46d76f;
+  --sidebar-border: #1f2a21;
+  --sidebar-ring: #46d76f;
 }
 
 @layer base {
@@ -158,4 +197,19 @@
   100% {
     transform: translateY(100%);
   }
+}
+
+/* ── Shared utilities ────────────────────────────────────────────────── */
+
+@utility label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }

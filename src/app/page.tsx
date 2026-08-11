@@ -110,23 +110,14 @@ export default function FaviconHasher() {
       {/* HEADER */}
       <header className="sticky top-0 z-10 border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center h-8 w-8 rounded-md bg-primary text-primary-foreground font-mono font-bold text-sm">
-              0x
-            </div>
-            <div className="leading-tight">
-              <p className="font-mono font-bold text-sm tracking-tight">
-                HashFavicon<span className="text-primary">.</span>
-              </p>
-              <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest">
-                by G3kSec
-              </p>
-            </div>
+          <div className="flex items-baseline gap-px font-mono text-[0.9375rem] font-semibold tracking-tight">
+            <span className="text-primary">0x</span>
+            <span>HashFavicon</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <a href="https://github.com/G3kSec/0xHashFavicon" target="_blank" rel="noreferrer">
-              <Button variant="outline" size="icon" className="cursor-pointer border-border text-muted-foreground hover:text-primary hover:border-primary/40">
+              <Button variant="outline" size="icon-sm" className="cursor-pointer border-border text-muted-foreground hover:text-primary hover:border-primary/40">
                 <Github className="size-4" />
               </Button>
             </a>
@@ -140,10 +131,8 @@ export default function FaviconHasher() {
           {/* COLUMNA IZQUIERDA: HERRAMIENTA */}
           <div className="lg:col-span-2 space-y-6">
             <div className="space-y-2">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-                {"// favicon fingerprinting"}
-              </p>
-              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+              <p className="label !text-primary">{"// favicon fingerprinting"}</p>
+              <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
                 Asset discovery, starting from a single icon.
               </h1>
               <p className="text-muted-foreground text-sm max-w-xl">
@@ -158,7 +147,7 @@ export default function FaviconHasher() {
                 <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
                 <span className="h-2.5 w-2.5 rounded-full bg-primary/70" />
-                <span className="ml-3 text-[11px] font-mono text-muted-foreground truncate">
+                <span className="label !normal-case !tracking-normal ml-3 truncate">
                   ~/0xhashfavicon/target-input.sh
                 </span>
               </div>
@@ -248,11 +237,9 @@ export default function FaviconHasher() {
                         className="w-12 h-12 rounded-md bg-muted p-2 border border-border object-contain"
                       />
                       <div className="flex-1 min-w-0">
-                        <label className="text-[10px] text-muted-foreground uppercase font-mono font-bold tracking-widest">
-                          MurmurHash3
-                        </label>
+                        <label className="label">MurmurHash3</label>
                         <div className="flex items-center gap-2">
-                          <div className="text-primary font-mono text-xl md:text-2xl font-bold truncate">
+                          <div className="nums text-primary font-mono text-xl md:text-2xl font-bold truncate">
                             {result.hash}
                           </div>
                           <Button
@@ -277,7 +264,7 @@ export default function FaviconHasher() {
                         <div className="flex items-center gap-2 font-bold font-mono text-sm">
                           <Globe className="w-4 h-4 text-primary" /> SHODAN
                         </div>
-                        <span className="text-[10px] text-muted-foreground font-mono">
+                        <span className="label !normal-case !tracking-normal">
                           query: http.favicon.hash
                         </span>
                       </Button>
@@ -291,7 +278,7 @@ export default function FaviconHasher() {
                         <div className="flex items-center gap-2 font-bold font-mono text-sm">
                           <Shield className="w-4 h-4 text-primary" /> FOFA
                         </div>
-                        <span className="text-[10px] text-muted-foreground font-mono">
+                        <span className="label !normal-case !tracking-normal">
                           query: icon_hash
                         </span>
                       </Button>
@@ -305,7 +292,7 @@ export default function FaviconHasher() {
           {/* COLUMNA DERECHA: HISTORIAL */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2 font-mono">
+              <h2 className="label flex items-center gap-2">
                 <History className="w-3.5 h-3.5" /> scan_history.log
               </h2>
               {history.length > 0 && (
@@ -337,8 +324,8 @@ export default function FaviconHasher() {
                       className="w-8 h-8 rounded bg-muted p-1 object-contain shrink-0"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] text-muted-foreground truncate font-mono">{item.target}</p>
-                      <p className="text-sm font-mono font-semibold group-hover:text-primary transition-colors">
+                      <p className="label !normal-case !tracking-normal truncate">{item.target}</p>
+                      <p className="nums text-sm font-mono font-semibold group-hover:text-primary transition-colors">
                         {item.hash}
                       </p>
                     </div>
@@ -362,23 +349,26 @@ export default function FaviconHasher() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4 md:px-8 text-muted-foreground">
           <div className="flex items-center gap-2">
             <Terminal className="h-3.5 w-3.5 text-primary" />
-            <p className="text-xs font-mono tracking-tight">
-              <span className="font-bold text-foreground">0xHashFavicon</span>
-              <span className="mx-2 text-border">|</span>
-              by{" "}
-              <span className="hover:text-primary transition-colors">G3kSec</span>
+            <p className="font-mono text-sm tracking-tight">
+              <span className="text-primary">0x</span>
+              <span className="text-foreground">HashFavicon</span>
+              <span className="text-muted-foreground"> — by </span>
+              <a
+                href="https://github.com/G3kSec"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                G3kSec
+              </a>
             </p>
           </div>
 
-          <div className="flex items-center gap-6 text-[11px] font-mono uppercase tracking-widest">
-            <a
-              href="https://github.com/G3kSec"
-              target="_blank"
-              className="hover:text-primary transition-colors"
-            >
+          <div className="flex items-center gap-6">
+            <a href="https://github.com/G3kSec" target="_blank" rel="noreferrer" className="label hover:!text-primary transition-colors">
               GitHub
             </a>
-            <p className="font-bold">&copy; {new Date().getFullYear()}</p>
+            <p className="label nums">&copy; {new Date().getFullYear()}</p>
           </div>
         </div>
       </footer>

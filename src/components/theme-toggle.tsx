@@ -30,9 +30,9 @@ export function ThemeToggle() {
   return (
     <Button
       variant="outline"
-      size="icon"
+      size="icon-sm"
       onClick={toggle}
-      aria-label="Toggle theme"
+      aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
       className="cursor-pointer border-border bg-card/60 text-muted-foreground hover:text-primary hover:border-primary/40"
     >
       {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
