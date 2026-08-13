@@ -109,7 +109,7 @@ export default function FaviconHasher() {
     <main className="min-h-screen flex flex-col font-sans selection:bg-primary/25">
       {/* HEADER */}
       <header className="sticky top-0 z-10 border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
           <div className="flex items-baseline gap-px font-mono text-[0.9375rem] font-semibold tracking-tight">
             <span className="text-primary">0x</span>
             <span>HashFavicon</span>
