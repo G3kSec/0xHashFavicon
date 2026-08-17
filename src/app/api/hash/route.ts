@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import murmurhash3 from 'murmurhash3js';
-import { isPrivateUrl } from '@/lib/url-validation';
+import { isPrivateUrl, resolveAndValidate } from '@/lib/url-validation';
 
 const MAX_FAVICON_SIZE = 2 * 1024 * 1024; // 2 MB
 
@@ -40,11 +40,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Requests to private/internal addresses are not allowed' }, { status: 400 });
     }
 
+    await resolveAndValidate(parsed.hostname);
+
     const response = await axios.get(targetUrl, {
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; FaviconHasher/1.0)' },
       timeout: 5000,
       maxRedirects: 3,
       maxContentLength: 5 * 1024 * 1024,
+      beforeRedirect: (options) => {
+        const href = String(options.href || `${options.protocol}//${options.hostname}`);
+        const redirectUrl = new URL(href);
+        if (isPrivateUrl(redirectUrl)) {
+          throw new Error('Redirect to private/internal address blocked');
+        }
+      },
     });
 
     const html = response.data;
@@ -74,11 +83,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Favicon points to a private/internal address' }, { status: 400 });
     }
 
+    await resolveAndValidate(faviconParsed.hostname);
+
     const imageResponse = await axios.get(faviconUrl, {
       responseType: 'arraybuffer',
       timeout: 5000,
       maxRedirects: 3,
       maxContentLength: MAX_FAVICON_SIZE,
+      beforeRedirect: (options) => {
+        const href = String(options.href || `${options.protocol}//${options.hostname}`);
+        const redirectUrl = new URL(href);
+        if (isPrivateUrl(redirectUrl)) {
+          throw new Error('Redirect to private/internal address blocked');
+        }
+      },
     });
 
     const base64 = Buffer.from(imageResponse.data).toString('base64');
@@ -91,6 +109,10 @@ export async function POST(req: Request) {
       shodanQuery: `http.favicon.hash:${hash}`,
     });
   } catch (error: unknown) {
+    if (error instanceof Error && error.message.includes('private')) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+
     const isAxiosTimeout = axios.isAxiosError(error) && error.code === 'ECONNABORTED';
     const message = isAxiosTimeout
       ? 'Request timed out. Ensure the URL is reachable.'

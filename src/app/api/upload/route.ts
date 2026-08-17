@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'File too large (max 2 MB)' }, { status: 400 });
     }
 
-    if (file.type && !ALLOWED_TYPES.has(file.type)) {
+    if (!file.type || !ALLOWED_TYPES.has(file.type)) {
       return NextResponse.json({ error: 'Unsupported file type' }, { status: 400 });
     }
 
